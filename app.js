@@ -34,6 +34,10 @@ app.get('/', function (req, res) {
     res.render("edit")
     })
   
+    app.get('/delete/:id', async (req, res) => {
+      let users = await userModel.findOneAndDelete({ _id: req.params.id});
+      res.redirect("/read");
+      })
 
 
 app.listen(3000)
