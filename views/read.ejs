@@ -13,19 +13,23 @@
 
         <h1 class="text-2xl traking-tighter">All user</h1>
         <div class="users flex gap-3 flex-wrap">
-            <% user.forEach( function(user){  %> 
-                <div class="user w-72 p-4 bg-zinc-800 rounded-md ">
-                    <div class="w-full h-52 rounded-md bg-zinc-500 overflow-hidden">
-                        <img class="w-full h-full object-cover"  src="  <%= user.img %> " alt="source error" />
+            <% if(user.length > 0){ %>
+                <% user.forEach( function(user){  %> 
+                    <div class="user w-72 p-4 bg-zinc-800 rounded-md ">
+                        <div class="w-full h-52 rounded-md bg-zinc-500 overflow-hidden">
+                            <img class="w-full h-full object-cover"  src="  <%= user.img %> " alt="source error" />
+                        </div>
+                        <h3 class="text-xl mt-3 traking-tighter"><%= user.name %></h3>
+                        <h4 class="text-zinc-500"><%= user.email %></h4>
+                        <div class="flex gap-3 mt-10">
+                            <a class="text-zinc-500" href="/edit">edit user</a >
+                            <a class="text-red-500" href="/delete/<%= user._id %>">Delete user</a>
+                        </div>
                     </div>
-                    <h3 class="text-xl mt-3 traking-tighter"><%= user.name %></h3>
-                    <h4 class="text-zinc-500"><%= user.email %></h4>
-                    <div class="flex gap-3 mt-10">
-                        <a class="text-zinc-500" href="/edit">edit user</a >
-                        <a class="text-red-500" href="">Delete user</a>
-                    </div>
-                </div>
-            <% }) %> 
+                <% }) %> 
+                        <% } else { %>
+                <p class="text-2xl text-zinc-400 ">no user yet</p>
+                <% } %>
         </div>
     </div>
 </body>
