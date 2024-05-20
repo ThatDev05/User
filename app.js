@@ -30,8 +30,8 @@ app.get('/', function (req, res) {
       res.redirect(`/read`)
     })
 
-  app.get('/edit', function (req, res) {
-    res.render("edit")
+  app.get('/edit/:id', function (_req, res) {
+    res.render("edit.ejs")
     })
   
     app.get('/delete/:id', async (req, res) => {
