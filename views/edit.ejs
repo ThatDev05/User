@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,36 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
     <div class="w-full h-screen bg-zinc-900 p-10">
         <a class=" mb-5 text-blue-500 text-2xl" href="/read">All users</a>
         <a class=" mb-5 text-blue-500 text-2xl" href="/">Home</a>
+        <% if (user.length > 0)  { %>
+        <% user.forEach( function(user){  %> 
         <form action="/edit" method="post">
-    <h1>edit user</h1>
-    <hr>
-    <label for="fname">First Name:</label><br>
-    <input class="px-5 py-2 bg-transparent outline-none border-2 border-zinc-700 rounded-xl" type="text" id="fname"  placeholder="name"name="fname"><br>
-    
-    <label for="email">Email:</label><br>
-    <input class="px-5 py-2 bg-transparent outline-none border-2 border-zinc-700 rounded-xl" type="email" id="email" placeholder="email"name name="email"><br>
-    
-    <label for="lname">Profile pic:</label><br>
-    <input class="px-5 py-2 bg-transparent outline-none border-2 border-zinc-700 rounded-xl" type="text" id="lname"  placeholder="image url"name="img"><br>
-  
+            <h1>edit user</h1>
+            <hr>
+            <label for="name">First Name:</label><br>
+            <input class="px-5 py-2 bg-transparent outline-none border-2 border-zinc-700 rounded-xl" type="text" 
+            id="name" placeholder="name" name="name" value="" ><br>
 
-    <input class="px-3 py-1 border-2 border-yellow-400 bg-yellow-400 rounded-xl mt-4" type="submit" value="update">
-  </form>
-  
+            <label for="email">Email:</label><br>
+            <input class="px-5 py-2 bg-transparent outline-none border-2 border-zinc-700 rounded-xl" type="email"
+                id="email" placeholder="email" name="email" value="<%= user.email %>" ><br>
+
+            <label for="lname">Profile pic:</label><br>
+            <input class="px-5 py-2 bg-transparent outline-none border-2 border-zinc-700 rounded-xl" type="text"
+                id="lname" placeholder="image url" name="img" value="" ><br>
+
+
+            <input class="px-3 py-1 border-2 border-yellow-400 bg-yellow-400 rounded-xl mt-4" type="submit"
+                value="update">
+                <% }) %> 
+                <% } %>
+        </form>
+
     </div>
 </body>
+
 </html>

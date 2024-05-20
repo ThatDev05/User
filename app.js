@@ -30,8 +30,9 @@ app.get('/', function (req, res) {
       res.redirect(`/read`)
     })
 
-  app.get('/edit/:id', function (_req, res) {
-    res.render("edit.ejs")
+  app.get('/edit/:userid', async (_req, res) => {
+    const user = await usermodel.findOne({ _id: _req.params.id});
+    res.render("edit", {user} )
     })
   
     app.get('/delete/:id', async (req, res) => {
