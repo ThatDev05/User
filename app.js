@@ -30,11 +30,20 @@ app.get('/', function (req, res) {
       res.redirect(`/read`)
     })
 
-  app.get('/edit/:userid', async (_req, res) => {
-    const user = await usermodel.findOne({ _id: _req.params.id});
-    res.render("edit", {user} )
-    })
+
+    app.get('/edit/:id',  async function (req, res) {
+      let user = await usermodel.findOne();
+      res.render("edit", {user})
+      })
+
+      app.post('/update/:id', async function (req, res) {
+        let {name ,email, img } =req.body;
+
+        let user = await usermodel.findOneAndUpdate({_id: req.params.id}, {name ,email, img}, {new: true} )
   
+        res.redirect(`/read`)
+      })
+
     app.get('/delete/:id', async (req, res) => {
       const user = await usermodel.findOneAndDelete({ _id: req.params.id});
       res.redirect("/read");
